@@ -1,0 +1,24 @@
+
+name: Pevrino Plugin Autopilot Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Analyze repository
+        uses: imMamdouhaboammar/chatgpt-codex-plugin-autopilot@v0.7.0
+        with:
+          path: '.'
+          action: 'analyze'
+          create-pr: 'false'
+          fail-on-error: 'true'
+          summary: 'true'
